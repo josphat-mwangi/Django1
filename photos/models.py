@@ -26,6 +26,9 @@ class Image(models.Model):
        photos = cls.objects.filter()
        return photos 
 
+    @classmethod
+    def search_image(cls,category):
+        photos = cls.objects.filter(image_name__icontains=category)
 
     def __str__(self):
         return self.image_name
