@@ -20,6 +20,7 @@ class Image(models.Model):
     image_location=models.ForeignKey(Location,on_delete=models.CASCADE)
     image_category=models.ManyToManyField(Category)
     image = models.ImageField(upload_to = 'images/')
+    pub_date = models.DateTimeField(auto_now_add=True)
     
     @classmethod
     def photo_display(cls):
