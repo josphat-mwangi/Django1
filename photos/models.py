@@ -31,10 +31,9 @@ class Image(models.Model):
         display = cls.objects.filter(category__name__icontains=search_term)
         return display
     @classmethod
-    def filter_by_location(cls):
-        display = cls.objects.filter(
-            location__name__icontains='Silicon Valley')
-        return display
+    def filter_by_location(cls, id):
+       images = Image.objects.filter(location_id=id)
+       return images  
 
     def __str__(self):
         return self.image_name
