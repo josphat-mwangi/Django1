@@ -13,14 +13,45 @@
 
     <div class="row">
 
-        {% if images %}
-        {% for item in images %}
-        <div class="col-sm-6 col-md-6">
-            <h1>{{item.image_name}}</h1>
-            <img src="{{item.image.url}}">
+        {% for photo in images %}
+        <div class="col-md-4 col-md-4 col-md-4">
+            <img src="{{photo.image.url}}" class="img-responsive img-fluid img-thumbnail" style="width: 100%;height:300px"
+                data-toggle="modal" data-target="#{{ photo.id }}" data-backdrop="false">
+            <a href="/image/{{photo.id}} " class="btn btn-primary">learn more</a>
+            <a href="/ " class="btn btn-primary">back Home</a>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade right" id="{{ photo.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-full-height modal-right" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title w-100 text-center" id="imagetitle"> {{photo.image_name}}</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body ">
+                        <img class="card-img-top img-responsive" id="img{{image.id}}" src="{{photo.image.url}}"
+                            alt="Card image cap">
+                        <p class="card-text photo ">Photo description : {{photo.image_description}}.</p>
+                        <p class="card-text shot">Taken in: {{photo.location.name}}</p>
+                        <p class="card-text cate">Category: {{photo.category.name}}</p>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="text" value="http://127.0.0.1:8000{{photo.image.url}}" id="myInput">
+        
+                            <button onclick="myFunction()" onmouseout="outFunc()" id="">
+                                <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+                                Copy text
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         {% endfor %}
-        {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}

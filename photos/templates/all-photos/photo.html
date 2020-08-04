@@ -3,17 +3,17 @@
 {{block.super}}
 <style>
   body{
-      background-color: rgb(118, 116, 129);
-      color: black;
+      background-image: url(https://www.pexels.com/photo/bird-s-eye-view-bright-car-colors-1670457/);
   }
 </style>
+
 <div class="container" style="color: brown;margin-top:60px;">
     <div class="row center-block">
         
         {% for photo in photos %}
         <div class="col-md-4 col-md-4 col-md-4">
             <img src="{{photo.image.url}}" class="img-responsive img-fluid img-thumbnail"
-                style="width: 100%;height:200px" data-toggle="modal" data-target="#{{ photo.id }}"
+                style="width: 100%;height:300px" data-toggle="modal" data-target="#{{ photo.id }}"
                 data-backdrop="false">
                 <a href="/image/{{photo.id}} " class="btn btn-primary">learn more</a>
         </div>
